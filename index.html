@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Baby Shower de Liam</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Fredoka One', cursive;
+      background-color: #d6f5d6;
+      background-image: url('img/fondo-babyshower.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: #285207;
+      text-align: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .dark-mode {
+      background-color: #285207;
+      background-image: none;
+      color: #a3d977;
+    }
+
+    @keyframes bajar {
+      from {
+        opacity: 0;
+        transform: translateY(-100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 5em;
+      margin-top: 1em;
+      z-index: 1;
+      position: relative;
+      animation: bajar 1.5s ease-out;
+      color: #2E9E4B;
+      text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.7);
+    }
+
+    .dino {
+      width: 150px;
+      margin: 1em auto;
+      animation: aparecer 2s ease-out;
+      z-index: 1;
+      position: relative;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: scale(0.5) rotate(-10deg);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
+    .cuadro-resaltado {
+      background-color: rgba(255, 248, 220, 0.7);
+      border: 2px dashed #a3d977;
+      padding: 1em;
+      margin: 2em auto;
+      width: 45%;
+      border-radius: 15px;
+      font-size: 1.3em;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+      z-index: 1;
+      position: relative;
+    }
+
+    .map-link {
+      display: block;
+      margin: 1em auto;
+      font-size: 1em;
+      color: #284099;
+      text-decoration: none;
+      z-index: 1;
+      position: relative;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 2em;
+      flex-wrap: wrap;
+      margin: 2em;
+      z-index: 1;
+      position: relative;
+    }
+
+    .btn {
+      background-color: #ffffff;
+      border-radius: 15px;
+      padding: 1em;
+      width: 160px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+    }
+
+    .btn img {
+      width: 100px;
+      height: auto;
+      margin-bottom: 0.5em;
+    }
+
+    .btn span {
+      display: block;
+      font-size: 1.1em;
+      color: #3b3b3b;
+    }
+
+    .btn.yes {
+      background-color: #a3d977;
+      color: white;
+    }
+
+    .btn.no {
+      background-color: #f08080;
+      color: white;
+    }
+
+    .countdown {
+      font-size: 2em;
+      margin-top: 2em;
+      z-index: 1;
+      position: relative;
+    }
+
+    .modo-oscuro-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #444;
+      color: white;
+      border: none;
+      padding: 0.8em 1em;
+      border-radius: 50%;
+      font-size: 1.5em;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease;
+    }
+
+    .modo-oscuro-btn:hover {
+      background-color: #666;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 0.5em;
+      }
+
+      .dino {
+        width: 100px;
+      }
+
+      .cuadro-resaltado {
+        width: 90%;
+        padding: 1em;
+        font-size: 1em;
+      }
+
+      .buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+      }
+
+      .btn {
+        width: 80%;
+        padding: 1em;
+      }
+
+      .btn img {
+        width: 80px;
+      }
+
+      .countdown {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <audio autoplay loop>
+    <source src="img/audio.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="marca-agua"></div>
+
+  <h1>🦖 ¡Baby Shower de Liam! 🍼</h1>
+
+  <div class="cuadro-resaltado">
+    <div class="details">
+      <p>🦕 ¡RAWR!   It´s a Boy</p>
+      <p>📍 Fracc. Real Alcalá Sur (Casa Club), Ojo de Agua, Tecamac</p>
+      <p>📅 Domingo 9 de Noviembre</p>
+      <p>🕒 3:00 PM</p>
+      <p>🎉 Celebraremos contigo la llegada de Liam</p>
+    </div>
+    <a class="map-link" href="https://www.google.com/maps?q=Tecámac+Ojo+de+Agua+Fraccionamiento+Real+Alcalá+Sur+Casa+Club" target="_blank">
+      Ver ubicación en Google Maps
+    </a>
+
+<div class="buttons">
+  <div class="btn yes" onclick="mostrarCampoNombre('si')">
+    <img src="img/asistire.png" alt="Asistiré">
+    <span>✅ Asistiré</span>
+  </div>
+  <div class="btn no" onclick="mostrarCampoNombre('no')">
+    <img src="img/nopodre.png" alt="No podré asistir">
+    <span>❌ No podré asistir</span>
+  </div>
+</div>
+
+<p id="texto-previo" style="font-size: 0.8em; color: #285207; margin-top: 1em;">
+  ¡Si confirmas asistencia, por favor indícanos el nombre de los adultos y niños que te acompañarán!
+  🎁 ¡Les espera una pequeña sorpresa! 🎁
+</p>
+
+<div id="nombre-container" style="display:none; margin-top: 1em;">
+  <input type="text" id="nombreInvitado" placeholder="Tu nombre" style="padding: 0.3em 0.6em; font-size: 1em; border-radius: 8px; border: 1px solid #ccc; width: 180px;"><br><br>
+
+  <input type="number" id="adultos" min="0" placeholder="¿Cuántos adultos te acompañan?" style="padding: 0.3em 0.6em; font-size: 0.8em; border-radius: 8px; border: 1px solid #ccc; width: 220px;"><br><br>
+
+  <textarea id="nombresAdultos" placeholder="Nombres de los adultos" rows="3" style="padding: 0.3em 0.6em; font-size: 1em; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 400px;"></textarea><br><br>
+
+  <input type="number" id="ninos" min="0" placeholder="¿Cuántos niños te acompañan?" style="padding: 0.3em 0.6em; font-size: 0.8em; border-radius: 8px; border: 1px solid #ccc; width: 220px;"><br><br>
+
+  <textarea id="nombresNinos" placeholder="Nombres de los niños" rows="3" style="padding: 0.3em 0.6em; font-size: 1em; border-radius: 8px; border: 1px solid #ccc; width: 90%; max-width: 400px;"></textarea><br><br>
+
+  <button onclick="enviarWhatsApp()" style="margin-top: 0.5em; padding: 0.5em 1em; font-size: 1em; border-radius: 8px; background-color: #a3d977; color: white; border: none; cursor: pointer;">Confirmar</button>
+</div>
+
+    <div class="countdown" id="countdown">
+      ⏳ Faltan <span id="days"></span> días para el evento
+    </div>
+
+  </div>
+
+  <script>
+    const eventDate = new Date("2025-11-09T15:00:00");
+    const countdown = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = eventDate - now;
+
+      if (diff <= 0) {
+        countdown.innerHTML = "¡El evento ha comenzado!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdown.innerHTML = `⏳ Faltan ${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos`;
+    }
+
+    setInterval(updateCountdown, 1000);
+updateCountdown();
+
+function toggleDarkMode() {
+  document.body.classList.toggle('dark-mode');
+}
+
+let tipoConfirmacion = "";
+
+function mostrarCampoNombre(tipo) {
+  tipoConfirmacion = tipo;
+  const container = document.getElementById("nombre-container");
+
+  if (tipo === "si") {
+    container.style.display = "block";
+  } else {
+    container.style.display = "none";
+    const nombre = document.getElementById("nombreInvitado").value.trim() || "Invitado";
+    const mensaje = `Hola, soy ${nombre} y lamentablemente no podré asistir al Baby Shower de Liam 😔`;
+    const url = `https://wa.me/525554150979?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+  }
+}
+
+function enviarWhatsApp() {
+  const nombre = document.getElementById("nombreInvitado").value.trim();
+  const adultos = document.getElementById("adultos").value.trim() || 0;
+  const ninos = document.getElementById("ninos").value.trim() || 0;
+  const nombresAdultos = document.getElementById("nombresAdultos").value.trim();
+  const nombresNinos = document.getElementById("nombresNinos").value.trim();
+
+  if (!nombre) {
+    alert("Por favor escribe tu nombre.");
+    return;
+  }
+
+  let mensaje = ` 🥳¡Hola! Soy ${nombre} y confirmo mi asistencia al Baby Shower de Liam 🐣`;
+  mensaje += `\n 🤳🏼¡Gracias por la invitacion! Vendrán ${adultos} adulto(s) y ${ninos} peque(s) listos para celebrar.`;
+
+  const lista = [];
+  if (nombresAdultos) lista.push(`Adultos: ${nombresAdultos}`);
+  if (nombresNinos) lista.push(`Niños: ${nombresNinos}`);
+  if (lista.length > 0) mensaje += `\n 📝 Lista de acompañantes:\n${lista.join("\n")}`;
+
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+
+  const url = `https://wa.me/525617751557?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, '_blank');
+}
+  </script>
+<button class="modo-oscuro-btn" onclick="toggleDarkMode()">🌙</button>
+
+</body>
+</html>
